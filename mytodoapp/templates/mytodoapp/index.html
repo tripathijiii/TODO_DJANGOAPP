@@ -1,0 +1,53 @@
+{% extends 'mytodoapp/base.html' %}
+{% block body %}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="banner">
+                <div class="banner-text">
+                    <h1> ToDo</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <h4>Add Task</h4>
+            <form class="p-3 shadow" method="post">
+                {% csrf_token  %}
+                <div class="form-group">
+                    <input type="text" class="form-control" name = "name" id = "name" placeholder="Enter Task Name" >
+                </div>
+                <div class="form-group">
+                    <input type="date" class="form-control" name = "date" id = "date"  >
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" name = "priority" id = "priority" placeholder="Enter the priority" >
+                </div>
+                 
+                <input type="submit" class="btn btn-success">
+            </form>
+        </div>
+        <div class="col-md-6">
+            <h4>Task to be Completed</h4>
+            {% for task in task_list %}
+            <div  class="shadow card">
+                <div class="card-body">
+                    <h5 class="card-title">{{ task.name }}</h5>
+                    <p><b>priority = {{ task.priority }}</b></p>
+                    <h6>{{task.date}}</h6>
+                    <div class="row-md">
+                        <a class="btn btn-danger" href="{% url 'delete' task.id %}">Done</a>
+                        <a class="btn btn-warning" href="{% url 'edit' task.id %}">Edit</a>
+                    </div>
+                </div>
+            </div>
+            <br>
+            {% endfor %}
+        
+        </div>
+    </div>
+</div>
+
+{% endblock %}

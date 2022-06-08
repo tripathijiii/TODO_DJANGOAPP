@@ -1,0 +1,15 @@
+{% extends 'mytodoapp/base.html' %}
+{% block body %}
+<div class="card">
+    <div class="card-header">
+        <h5 class="card-title"> Task Update</h5>
+    </div>
+    <div class="card-body">
+        <form method="POST">
+            {% csrf_token %}
+            {{form.as_p}}
+            <button type="Submit" class="btn btn-success">Update</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

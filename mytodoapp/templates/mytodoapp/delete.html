@@ -1,0 +1,10 @@
+{% extends 'mytodoapp/base.html' %}
+{% block body %}
+    <form method="POST">
+        {% csrf_token %}
+        <h4> {{task.name}}</h4>
+        <br>
+        <h3> Are you sure this task is done ?</h3>
+        <button type="submit" class="btn btn-danger">Confirm</button>
+    </form>
+{% endblock %}

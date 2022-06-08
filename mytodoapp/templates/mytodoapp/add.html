@@ -1,0 +1,24 @@
+
+{% extends 'mytodoapp/base.html' %}
+{% block body %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <form class="p-3 shadow" method="post">
+                {% csrf_token  %}
+                <div class="form-group">
+                    <input type="text" class="form-control" name = "name" id = "name" placeholder="Enter Task Name" >
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" name = "priority" id = "priority" placeholder="Enter the priority" >
+                </div>
+                
+                <input type="submit" class="btn btn-success">
+            </form>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
